@@ -80,8 +80,6 @@ else
 
 })
 
-
-
 }
 
 
@@ -102,18 +100,17 @@ mobileMenuToggle()
 getMyPosition,
 
 FindCity,
-
 }
-
 })
 
+getMyPosition()
 
-setTimeout(() => 
-{
+// setTimeout(() => 
+// {
 
-parsVueWeather(vueWeather,fakeResponse) 
+// parsVueWeather(vueWeather,fakeResponse) 
 
-vueWeather
-}, 2000);
+// vueWeather
+// }, 2000);
 
 
