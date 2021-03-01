@@ -1,0 +1,182 @@
+
+.weather-app
+{
+overflow-x: hidden;
+width: 100%;
+min-height: 100vh;
+}
+.weather__wrapper 
+{
+margin: 0 auto;
+padding: 2rem;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.weather__body 
+{
+	width: 100%;
+	min-height: 40rem;
+	font-size: 1.4em;
+
+	border-radius: 10px;
+background: $mainAccentColor;
+	display: flex;
+	flex-direction: column;
+justify-content: space-between;
+overflow: hidden;
+box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.4);
+}
+
+.weather__block1,.weather__block2
+{
+	padding: 2rem 3rem;
+	height: 15rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.weather__block1
+{
+background: $mainBgColor ;
+}
+.weather__block2
+{
+	background: $mainTxtColor ;
+	color: $mainAccentColor;
+}
+
+.weather__wind,
+.weather__feelslike,
+.weather__humidity 
+{
+	&::before
+	{
+		font-size: 1.4rem;
+		color: $minorTxtColor;
+	}
+}
+
+.weather__city 
+{
+	font-size: 2.5rem;
+	border-bottom: 2px solid $minorAccentColor;
+}
+.weather__local-data 
+{
+	font-size: 2rem;
+text-align: center;
+height: 3rem;
+}
+
+.weather__region 
+{
+
+}
+
+.weather__country 
+{
+
+}
+.weather__feelslike 
+{
+	&::before
+	{
+		content: 'Feels Like: ';
+	}
+}
+.weather__temperature 
+{
+font-size: 1.8rem;
+}
+.weather__wind {
+	&::before
+	{
+		content: 'Wind Speed: ';
+	}
+	&::after
+	{
+		content: ' kmph ';
+	}
+
+}
+.weather__clouds-icon,.weather__description 
+{
+height: 5rem;
+}
+
+
+.weather__clouds-icon {
+border-radius: 5px;
+margin-right: 1rem;
+}
+.weather__description 
+{
+	display: flex; align-items: center;
+	font-size: 2.5rem;
+	
+}
+.weather__humidity {
+	&::before
+	{
+		content: 'Humidity: ';
+	}
+}
+
+@media (min-width: 575.98px){ 
+
+
+		.weather__body 
+{
+	width: 90%;
+	font-size: 1.5em;
+}
+ }
+ 
+ @media (min-width: 767.98px)
+ {
+	.weather__block1,.weather__block2
+	{
+		padding: 3rem 3rem;
+		height: 16rem;
+	}
+		.weather__body 
+{
+	width: 60%;
+	font-size: 1.6em;
+}
+  } 
+ 
+ @media (min-width: 991.98px)
+ {
+
+  }
+ 
+  @media (min-width: 1199.98px){
+	.weather__block1,.weather__block2
+	{
+		padding: 3rem 3rem;
+		height: 18rem;
+	}
+		.weather__body 
+{
+	width: 50%;
+	font-size: 1.8em;
+}
+ }
+ 
+ @media (min-width: 1399.98px)
+ {
+	.weather__block1,.weather__block2
+	{
+		padding: 3rem 3rem;
+		height: 18rem;
+	}
+		.weather__body 
+{
+	width: 40%;
+	font-size: 2em;
+}
+
+}

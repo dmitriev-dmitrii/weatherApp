@@ -1,0 +1,150 @@
+.header 
+{
+width: 100%;
+background: $mainAccentColor;
+font-size: 1.4em;
+
+}
+.header__list 
+{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	position: relative;
+	
+}
+
+.search-form 
+{
+display: flex;
+
+}
+
+.search-form__input,.search-form__submit 
+{
+outline: none;
+border: none;
+padding: 1rem  0.5rem;
+
+}
+
+.search-form__input 
+{
+width: 60%;
+border-radius: 7px 0  0 7px ;
+transition: all 0.3s linear;
+&:focus
+{
+	box-shadow: 0 0 3px 1px $mainTxtColor;
+}
+}
+.search-form__submit 
+{width: 25%;
+border-radius:  0 7px 7px 0  ;
+&:hover,&:focus
+{
+
+	box-shadow: 0 0 3px 1px $mainTxtColor;
+}
+}
+
+.nav__mobile-toggle 
+{
+padding: 1rem;
+border: none;
+border-radius: 7px ;
+background: $minorAccentColor;
+color: $buttonColor;
+}
+
+.nav{
+position: absolute;
+top: 100%;
+left: 0;
+width: 100%;
+background: $minorAccentColor;
+padding: 1rem 2rem;
+transition: all 0.3s linear;
+transform: translateX(150%);
+opacity: 0;
+}
+.nav.active {
+transform: translateX(-0%);
+opacity: 1;
+}
+.nav__list {
+	display: flex;
+	flex-direction: column-reverse;
+	text-align: center;
+	font-size: 1.5rem;
+	color: $buttonColor;
+}
+.nav__item {
+	margin: 0.5rem ;
+	padding: 0.3rem;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+@media (min-width: 575.98px)
+{ 
+.search-form 
+{
+width: 60%;
+}
+}
+
+@media (min-width: 767.98px)
+{
+	.search-form 
+	{
+	width: 80%;
+	}
+} 
+
+@media (min-width: 991.98px)
+{
+
+	.nav__mobile-toggle 
+	{
+display: none;
+	}
+		.nav{
+		position: unset;
+		width: auto;
+		background: transparent;
+		padding: 0.5rem 1.5rem;
+		opacity: 1;
+		transform: translateY(0%);
+color: $buttonColor;
+		}
+		.nav__list 
+		{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+		}
+		.nav__item {
+			margin: 0 0.7rem ;
+			transition: all 0.3s ease-in;
+&:hover,&:focus
+{
+	color: $minorAccentColor;
+	text-shadow: 0 0 3px $mainTxtColor;
+}
+}
+
+
+} 
+
+
+
+ 
+  @media (min-width: 1199.98px){
+ 
+ }
+ 
+ @media (min-width: 1399.98px){
+ 
+ }

@@ -1,0 +1,40 @@
+
+<header class="header">
+    <div class="header__list contanier">
+
+      <form v-on:submit.prevent="FindCity(inputValue)" class="search-form">
+        <input id="searchFormInput" type="search" minlength="1" v-model="inputValue" required name="searchCity" placeholder="Find city" class="search-form__input"
+          title="search city" />	
+        <button  id="searchFormSubmit"   type='submit' class="search-form__submit button">search</button>
+      </form>
+
+      <nav class="nav">
+        <ul class="nav__list" @click="mobileMenuToggle">
+
+          <li class="nav__item" @click="getMyPosition">
+Find Me
+          </li>
+          <li class="nav__item" @click="FindCity(`cheboksary`)">
+            #Cheboksary
+          </li>      
+          <li class="nav__item" @click="FindCity(`Moscow`)">
+            #Moscow
+          </li>
+          <li class="nav__item" @click="FindCity(`London`)">
+            #London
+          </li>
+          <li class="nav__item" @click="FindCity(`New York`)">
+            #New York
+          </li>
+          <li class="nav__item" @click="FindCity(`Bangkok`)">
+            #Bangkok
+          </li>
+          <li class="nav__item" @click="FindCity(`Hong Kong`)"  >
+            #Hong Kong
+          </li>
+        </ul>
+      </nav>
+      <button class="nav__mobile-toggle " @click="mobileMenuToggle">menu</button>
+    </div>
+  </header>
+

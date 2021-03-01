@@ -1,0 +1,17 @@
+
+/* общие стили для всех страниц  */
+@import "global/normalize.scss";
+@import "global/colors.scss";
+@import "global/body.scss";
+
+/* общие стили для всех страниц  */
+
+/*  общие компоненты для страниц */
+
+@import "components/footer.scss";
+@import "components/header.scss";
+@import "components/buttons.scss";
+@import "components/spinkit.scss";
+/*  общие компоненты для страниц */
+
+@import "pages/main.scss";

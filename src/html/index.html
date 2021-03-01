@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/main.min.css">
+    
+        <script src="js/main.js" defer></script>
+        <script src="js/locationQery.js" defer></script>
+        <script src="js/api.js" defer></script>
+        <script src="js/VueWeather.js" defer></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" ></script>
+
+        <!-- Useful meta tags -->
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index, follow, noodp">
+        <meta name="googlebot" content="index, follow">
+        <meta name="google" content="notranslate">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <title> weatherApp </title>
+
+</head>
+
+<body>
+
+<div id="weatherApp"  class="weather-app">
+
+@include('./components/header.html')
+<template v-if="is_loadedData === true">
+<div  class="weather__wrapper ">
+
+<div  class="weather__body contanier ">
+
+<div  class="weather__block1 ">
+    <div class="weather__city">{{ city }}<span class="weather__temperature">{{ temperature}}&#176;</span></div>
+    <div class="weather__feelslike">{{ feelslike }}&#176;</div>
+    <div class="weather__region">{{ region }}</div>
+    <div class="weather__country">{{ country}}</div>
+</div>
+<div class="weather__local-data">Data Now : {{ localData }}</div>
+<div  class="weather__block2 ">
+
+    <div class="weather__description"> <img :src="weather_icon"  class="weather__clouds-icon"/>{{ description }}  </div>
+    <div class="weather__wind">{{ wind_speed }}</div>
+    <div class="weather__humidity">{{ humidity }}%</div>
+</div>
+</div>
+</div>
+</template>
+<template v-else>
+<div  class="weather__wrapper ">
+
+    <div  class="weather__body contanier ">
+    
+    <div  class="weather__block1 ">
+      
+        <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+        </div> 
+
+    </div>
+    <div class="weather__local-data"> 
+
+        <div class="sk-flow">
+        <div class="sk-flow-dot"></div>
+        <div class="sk-flow-dot"></div>
+        <div class="sk-flow-dot"></div>
+    </div>
+
+    </div>
+    <div  class="weather__block2 ">
+    
+        <div class="weather__description">      
+            <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+          </div>  </div>
+
+    </div>
+    
+    </div>
+    </div>
+
+
+</template>
+
+@include('./components/footer.html')
+</div>
+</body>
+</html>

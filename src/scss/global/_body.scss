@@ -1,0 +1,79 @@
+html
+{
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	font-size: 62.5%;
+
+}
+
+body
+{
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-weight: 300;
+	margin:  0;
+	padding:0 ;
+    line-height: 1.5;
+	background:$bodyColor;
+	min-height: 100vh;
+	color: $mainTxtColor;
+	  *,
+	  *::before,
+	  *::after {
+		box-sizing: inherit;
+	}
+
+}
+
+
+h1,h2,h3,h4,h5,h6,p
+{
+	margin: 0;
+	padding: 0;
+}
+
+ul,li
+{
+	margin: 0;
+	padding: 0;
+	list-style:none;
+}
+
+a
+{
+text-decoration: none;
+color: inherit;
+display: block;
+}
+
+.contanier
+{
+max-width: 1300px;
+margin: 0 auto;
+}
+
+button
+{
+	outline: none;
+	cursor: pointer;
+}
+
+img
+{
+	&:after { 
+		content: "\f1c5" " " attr(alt);
+		font-size: 2rem;
+		color: rgb(100, 100, 100);
+		display: block;
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+		border-top-left-radius:7px ;
+		border-top-right-radius:7px ;
+	}
+}
+
+
