@@ -5,12 +5,10 @@
         <link rel="stylesheet" href="css/main.min.css">
     
 
-        <script src="js/locationQery.js" defer></script>
-        <script src="js/api.js" defer></script>
         <script src="js/vue.min.js"defer ></script>
         <script src="js/VueWeather.js" defer></script>
 
- 
+
 
         <!-- Useful meta tags -->
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -38,10 +36,10 @@
 <div  class="weather__block1 ">
     <div class="weather__city">{{ city }}<span class="weather__temperature">{{ temperature}}&#176;</span></div>
     <div class="weather__feelslike">{{ feelslike }}&#176;</div>
-    <div class="weather__region">{{ region }}</div>
+
     <div class="weather__country">{{ country}}</div>
 </div>
-<div class="weather__local-data">Data Now : {{ localData }}</div>
+
 <div  class="weather__block2 ">
 
     <div class="weather__description"> <img :src="weather_icon"  class="weather__clouds-icon"/>{{ description }}  </div>

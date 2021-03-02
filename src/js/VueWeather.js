@@ -1,14 +1,9 @@
-
-
 let vueWeather = {}
 
 vueWeather.is_loadedData = false;
-vueWeather.is_day = '';
 vueWeather.inputValue  =  ''
 vueWeather.city  = '';
 vueWeather.country =  '';
-vueWeather.region =  '';
-vueWeather.localData =  '';
 vueWeather.temperature =  '';
 vueWeather.weather_icon =  '';
 vueWeather.description =  '';
@@ -16,24 +11,23 @@ vueWeather.wind_speed =  '';
 vueWeather.humidity =  '';
 vueWeather.feelslike =  '';
 
+Math.round(new Date().getTime()/1000.0)
+
 
 function parsVueWeather(vueData,data) 
 
 { 
-
 	vueData.is_loadedData = true;
-	vueData.is_day = data.current.is_day;
+
 	vueData.inputValue  =  '';
-	vueData.city  =  data.location.name;
-	vueData.country = data.location.country;
-	vueData.region = data.location.region;
-	vueData.localData = (data.location.localtime.substr(2, 9));
-	vueData.temperature = data.current.temperature;
-	vueData.weather_icon = data.current.weather_icons;
-	vueData.description = data.current.weather_descriptions[0];
-	vueData.wind_speed = data.current.wind_speed;
-	vueData.humidity = data.current.humidity;
-	vueData.feelslike = data.current.feelslike;
+	vueData.city  =  data.name;
+	vueData.country = data.sys.country;
+	vueData.temperature = data.main.temp;
+	vueData.weather_icon = `http://openweathermap.org/img/wn/`+data.weather[0].icon +`@2x.png`;
+	vueData.description = data.weather[0].description;
+	vueData.wind_speed = data.wind.speed ;
+	vueData.humidity = data.main.humidity;
+	vueData.feelslike = data.main.feels_like;
 
 }
 
@@ -41,21 +35,81 @@ function catchVueWeather(vueData,data)
 
 { 
 	vueData.is_loadedData = true;
-	vueData.is_day = '';
 
-	vueData.city  = 'Cant Find city  ';
-	vueData.country = 'error code '+ data.code;
-	vueData.region = 'error type ' + data.type;
+	vueData.city  = 'Город не найден  ';
+	vueData.country = 'код ошибки';
 	vueData.localData =  'Cant Find  ';
 	vueData.temperature =  '.';
 	vueData.weather_icon =  '.';
 	vueData.description =  '.';
 	vueData.wind_speed =  '.';
 	vueData.humidity =  '.';
-	vueData.feelslike =  'you sure  this correct ?  '+ vueData.inputValue;
+	vueData.feelslike =  'Вы уверены в запросе? :  '+ vueData.inputValue;
 
 }
 
+function makeUrl(query) 
+{
+const apiKey = '3427c22a63089519ba7e9b378b942e2e'
+const url= `http://api.openweathermap.org/data/2.5/weather?q=`+query+`&units=metric&lang=ru&appid=`+apiKey+``;
+return url
+} 
+
+
+
+
+function sendRequest(url) 
+{
+
+return fetch(url).then(response => 
+
+{
+if (response.ok) {
+
+return response.json()
+}
+else 
+{
+catchVueWeather(vueWeather,response) 
+}
+
+})
+}
+
+
+function getMyPosition() 
+{
+const options = 
+{
+enableHighAccuracy: true,
+timeout: 5000,
+maximumAge: 0
+};
+
+function success(position) 
+{
+
+const urlLocal= `http://api.openweathermap.org/data/2.5/weather?lat=`+position.coords.latitude+`&lon=`+position.coords.longitude+`&units=metric&lang=ru&appid=3427c22a63089519ba7e9b378b942e2e`
+
+sendRequest(urlLocal)
+.then((data) => 
+{
+console.log(data)
+parsVueWeather(vueWeather,data) 
+})
+}
+
+function error() 
+{
+
+sendRequest(makeUrl("Petersburg"))
+.then((data) => 
+{
+parsVueWeather(vueWeather,data) 
+})
+}
+navigator.geolocation.getCurrentPosition(success, error, options);
+}
 
 function FindCity (city) 
 {
@@ -64,53 +118,34 @@ sendRequest(makeUrl(city))
 
 .then((data) => 
 {
-
-
-if (data.success == false) 
-{
-console.log(data);
-catchVueWeather(vueWeather,data.error) 
-}
-
-else
-{
-	console.log(data);
-	parsVueWeather(vueWeather,data) 
-}
-
+parsVueWeather(vueWeather,data) 
 })
 
+
 }
-
-
 
 const weatherApp = new Vue({
 	el: '#weatherApp',
 
 	data: vueWeather
-
 ,
-
 methods: {
-
 mobileMenuToggle() 
 {
 	document.querySelector('.nav').classList.toggle('active')
 },
-getMyPosition,
-
 FindCity,
+getMyPosition
 }
 })
 
+setTimeout(() => 
+{
+
 getMyPosition()
 
-// setTimeout(() => 
-// {
+vueWeather
+}, 0);
 
-// parsVueWeather(vueWeather,fakeResponse) 
-
-// vueWeather
-// }, 2000);
 
 
