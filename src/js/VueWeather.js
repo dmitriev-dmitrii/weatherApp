@@ -23,7 +23,7 @@ function parsVueWeather(vueData,data)
 	vueData.city  =  data.name;
 	vueData.country = data.sys.country;
 	vueData.temperature = data.main.temp;
-	vueData.weather_icon = `http://openweathermap.org/img/wn/`+data.weather[0].icon +`@2x.png`;
+	vueData.weather_icon = `https://openweathermap.org/img/wn/`+data.weather[0].icon +`@2x.png`;
 	vueData.description = data.weather[0].description;
 	vueData.wind_speed = data.wind.speed ;
 	vueData.humidity = data.main.humidity;
@@ -37,21 +37,20 @@ function catchVueWeather(vueData,data)
 	vueData.is_loadedData = true;
 
 	vueData.city  = 'Город не найден  ';
-	vueData.country = 'код ошибки';
-	vueData.localData =  'Cant Find  ';
+	vueData.country = 'Вы уверены в запросе? :  '+ vueData.inputValue;
 	vueData.temperature =  '.';
-	vueData.weather_icon =  '.';
+	vueData.weather_icon =  'no Image';
 	vueData.description =  '.';
 	vueData.wind_speed =  '.';
 	vueData.humidity =  '.';
-	vueData.feelslike =  'Вы уверены в запросе? :  '+ vueData.inputValue;
+	vueData.feelslike =  'nan';
 
 }
 
 function makeUrl(query) 
 {
 const apiKey = '3427c22a63089519ba7e9b378b942e2e'
-const url= `http://api.openweathermap.org/data/2.5/weather?q=`+query+`&units=metric&lang=ru&appid=`+apiKey+``;
+const url= `https://api.openweathermap.org/data/2.5/weather?q=`+query+`&units=metric&lang=ru&appid=`+apiKey+``;
 return url
 } 
 
@@ -89,7 +88,7 @@ maximumAge: 0
 function success(position) 
 {
 
-const urlLocal= `http://api.openweathermap.org/data/2.5/weather?lat=`+position.coords.latitude+`&lon=`+position.coords.longitude+`&units=metric&lang=ru&appid=3427c22a63089519ba7e9b378b942e2e`
+const urlLocal= `https://api.openweathermap.org/data/2.5/weather?lat=`+position.coords.latitude+`&lon=`+position.coords.longitude+`&units=metric&lang=ru&appid=3427c22a63089519ba7e9b378b942e2e`
 
 sendRequest(urlLocal)
 .then((data) => 
@@ -102,7 +101,7 @@ parsVueWeather(vueWeather,data)
 function error() 
 {
 
-sendRequest(makeUrl("Petersburg"))
+sendRequest(makeUrl("Санкт-Петербург"))
 .then((data) => 
 {
 parsVueWeather(vueWeather,data) 
