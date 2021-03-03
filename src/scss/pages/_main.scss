@@ -1,7 +1,7 @@
 
 .weather-app
 {
-overflow-x: hidden;
+overflow: hidden;
 width: 100%;
 min-height: 100vh;
 }
@@ -65,25 +65,22 @@ background: $mainBgColor ;
 }
 .weather__local-data 
 {
-	font-size: 2rem;
+font-size: 2rem;
 text-align: center;
 height: 3rem;
 }
 
-.weather__region 
-{
 
-}
 
 .weather__country 
 {
-
+text-transform: uppercase;
 }
 .weather__feelslike 
 {
 	&::before
 	{
-		content: 'Feels Like: ';
+		content: 'Ощущается как: ';
 	}
 }
 .weather__temperature 
@@ -93,11 +90,11 @@ font-size: 1.8rem;
 .weather__wind {
 	&::before
 	{
-		content: 'Wind Speed: ';
+		content: 'Скорость Ветра: ';
 	}
 	&::after
 	{
-		content: ' kmph ';
+		content: ' км/ч ';
 	}
 
 }
@@ -105,25 +102,36 @@ font-size: 1.8rem;
 {
 height: 5rem;
 }
-
+.weather__clouds-icon
+{
+width: 5rem;
+}
 
 .weather__clouds-icon {
 border-radius: 5px;
+border: 1px solid rgba(0, 0, 0, 0.1);
 margin-right: 1rem;
+background: rgba(0, 0, 0, 0.2);
+box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.2);
 }
 .weather__description 
 {
 	display: flex; align-items: center;
 	font-size: 2.5rem;
-	
+	text-transform: capitalize;
 }
 .weather__humidity {
 	&::before
 	{
-		content: 'Humidity: ';
+		content: 'Влажность: ';
 	}
 }
+.animation
+{
 
+	display: none;
+
+}
 @media (min-width: 575.98px){ 
 
 
@@ -146,10 +154,33 @@ margin-right: 1rem;
 	width: 60%;
 	font-size: 1.6em;
 }
+
   } 
  
  @media (min-width: 991.98px)
  {
+
+	.animation
+	{
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	font-size: 2rem;
+	transform: rotate(5deg);
+		border-radius:30% 70% 70% 30% / 30% 30% 70% 70% ;
+		top: 10%;
+		right: 5%;
+		width: 10vw;
+		height: 12vw;
+		background: $buttonBgColor;
+		z-index: -1;
+		border: 3px solid;
+		box-shadow: -15px 7px 20px 7px;
+		padding: 1rem;
+		-webkit-text-stroke: 1px black;
+		animation: anim1 20s 0.3s infinite linear;
+	}
 
   }
  
@@ -179,4 +210,106 @@ margin-right: 1rem;
 	font-size: 2em;
 }
 
+}
+
+
+
+
+@keyframes anim1
+{
+10%{
+
+	border-radius:83% 17% 86% 14% / 87% 30% 70% 13% ;
+	top:50%;
+	right:10%;
+	width:13vw;
+	height: 14vw;
+	background: $buttonBgColor;
+	transform: rotate(10deg);
+}
+
+20%{
+
+	border-radius:84% 16% 86% 14% / 87% 84% 16% 13%  ;
+	top: 50%;
+	right: 10%;
+	width: 15vw;
+	height: 12vw;
+	background:whitesmoke;
+	transform: rotate(50deg);
+	color: dodgerblue;
+}
+30%{
+
+	border-radius:83% 17% 86% 14% / 87% 30% 70% 13% ;
+	top: 20%;
+	right: 10%;
+	width: 15vw;
+	height: 10vw;
+	background: rebeccapurple;
+}
+
+40%{
+	
+
+		border-radius:45% 55% 57% 43% / 15% 52% 48% 85%  ;
+		top: 50%;
+		right: 5%;
+		width: 12vw;
+		height: 17vw;
+		background: white;
+		transform: rotate(-10deg) scale(0.8);
+		color: yellow;
+	
+}
+
+50%{
+
+	border-radius:83% 17% 86% 14% / 87% 30% 70% 13% ;
+	top: 50%;
+	right: -10%;
+	width: 13vw;
+	height: 15vw;
+	background: greenyellow;
+	box-shadow: 15px -20px 20px 7px;
+}
+60%{
+	border-radius:83% 17% 86% 14% / 87% 30% 70% 13% ;
+	top: 50%;
+	right: 10%;
+	width: 15vw;
+	height: 20vw;
+	background: yellow;
+	color:$buttonBgColor;
+
+	
+}
+	
+70%{
+	border-radius:100% 0% 23% 77% / 9% 0% 100% 91%   ;
+	top: 50%;
+	right:5%;
+	width: 11vw;
+	height: 20vw;
+	background: goldenrod;
+	
+}
+90%{
+	border-radius:100% 0% 77% 23% / 100% 0% 100% 0%  ;
+	top: 50%;
+	right:5%;
+	width: 11vw;
+	height: 10vw;
+	background: greenyellow;
+	transform: rotate(45deg) scale(1.2);
+}
+100%{
+	border-radius:30% 70% 70% 30% / 30% 30% 70% 70% ;
+	top: 10%;
+	right: 5%;
+	width: 10vw;
+	height: 12vw;
+	background: $buttonBgColor;
+	
+}
 }
